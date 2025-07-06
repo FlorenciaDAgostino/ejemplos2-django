@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import saludo, saludo_con_template, crear_familiar, inicio, crear_curso, crear_estudiante, buscar_cursos, cursos,
+from .views import saludo, saludo_con_template, crear_familiar, inicio, crear_curso, crear_estudiante, buscar_cursos, cursos
 
 urlpatterns = [
     path('', inicio, name= 'inicio'),
