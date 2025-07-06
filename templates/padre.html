@@ -2,23 +2,25 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Inicio - Mi Sitio Web</title>
+  <title>{% block title %} Inicio - Mi Sitio Web {% endblock %}</title>
 </head>
 <body style="margin: 0; font-family: Arial, sans-serif; background: #f2f2f2; color: #333;">
 
+ {% block header %} 
   <!-- Encabezado -->
   <header style="background-color: #4CAF50; padding: 20px; text-align: center; color: white;">
     <h1 style="margin: 0;">Hola Mundo</h1>
     <p style="margin: 5px 0;">Tu lugar para aprender y descubrir</p>
   </header>
-
+{% endblock %} 
   <!-- Contenido principal -->
   <main style="padding: 40px; text-align: center;">
+    {% block content %} 
     <h2 style="color: #4CAF50;">¿Qué ofrecemos?</h2>
     <p style="max-width: 600px; margin: 0 auto 30px;">
       En nuestro sitio encontrarás recursos educativos, noticias de tecnología y herramientas útiles para tu día a día digital.
     </p>
-
+    {% endblock %} 
     <a href="#servicios" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">
       Ver más
     </a>
