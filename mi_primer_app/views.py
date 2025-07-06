@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Familiar, Curso, Estudiante
-from.forms import CursoForm, EstudianteForm
+from .models import Familiar, Curso, Estudiante, Profesores
+from.forms import CursoForm, EstudianteForm, ProfesoresForm
 
 # Create your views here.
 from django.http import HttpResponse
@@ -68,6 +68,25 @@ def crear_estudiante(request):
     else:
         form = EstudianteForm()
         return render(request, 'mi_primer_app/crear_estudiante.html', {'form': form})
+       
+def crear_profesores(request):
+
+    if request.method == 'POST':
+        form =ProfesoresForm(request.POST)
+        if form.is_valid():
+            # Procesar el formulario y guardar el curso
+            nuevo_curso = Profesores(
+                nombre=form.cleaned_data['nombre'],
+                apellido=form.cleaned_data['apellido'],
+                email=form.cleaned_data['email'],
+                curso=form.cleaned_data['curso'],
+            )
+            nuevo_curso.save()
+            return redirect('inicio')
+    else:
+        form = ProfesoresForm()
+        return render(request, 'mi_primer_app/crear_profesores.html', {'form': form})
+    
 
 def cursos(request):
     cursos = Curso.objects.all()

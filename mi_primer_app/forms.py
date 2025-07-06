@@ -17,3 +17,9 @@ class EstudianteForm(forms.Form):
     edad = forms.IntegerField(min_value=10, max_value=100)
     fecha_inscripcion = forms.DateField(
         widget=forms.DateInput(attrs={'type': 'date'}))
+    
+class ProfesoresForm(forms.Form):
+    nombre = forms.CharField(label="Nombre", max_length=100)
+    apellido = forms.CharField(label="Apellido", max_length=100)
+    email = forms.EmailField()
+    curso = forms.CharField(label="Curso", max_length=100)  
