@@ -45,7 +45,7 @@ def crear_curso(request):
                 activo=form.cleaned_data['activo']
             )
             nuevo_curso.save()
-            return redirect('inicio')
+            return redirect('cursos')
     else:
         form = CursoForm()
         return render(request, 'mi_primer_app/crear_curso.html', {'form': form})
@@ -68,4 +68,13 @@ def crear_estudiante(request):
     else:
         form = EstudianteForm()
         return render(request, 'mi_primer_app/crear_estudiante.html', {'form': form})
-   
+
+def cursos(request):
+    cursos = Curso.objects.all()
+    return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos})
+
+def buscar_cursos(request):
+    if request.method == 'GET':
+        nombre = request.GET.get('nombre', '')
+        cursos = Curso.objects.filter(nombre__icontains=nombre)
+        return render(request, 'mi_primer_app/cursos.html', {'cursos': cursos, 'nombre': nombre})
